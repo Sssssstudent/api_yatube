@@ -1,20 +1,17 @@
-"""Django settings for yatube project."""
-
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm%(5u7nv9j2%@3xb%#c3p-$9&0$kq$j6l@9+@ogairu48a+dy+'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
 
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -61,8 +58,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'yatube_api.wsgi.application'
 
 
-# Database
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,8 +65,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -88,7 +81,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
 
 LANGUAGE_CODE = 'ru-RU'
 
@@ -100,8 +92,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
 
